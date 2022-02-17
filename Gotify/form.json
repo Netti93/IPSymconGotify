@@ -4,7 +4,7 @@
         { "type": "ValidationTextBox", "name": "ApplicationToken", "caption": "Application Token (required)" }
     ],
     "actions": [        
-		    { "type": "Button", "label": "Send test message",  "onClick": "if (GOTIFY_SendMessage($id, $this->Translate('Test message'), $this->Translate('This is a test message from your Symcon instance'), 0)) echo 'OK'; else echo $this->Translate('Error');"  }
+		    { "type": "Button", "label": "Send test message",  "onClick": ["$title = $this->Translate('Test message')", "$message = $this->Translate('This is a test message from your Symcon instance'", "$error = $this->Translate('Error')", "if (GOTIFY_SendMessage($id, $title, $message), 0)) echo 'OK'; else echo $error;"]  }
     ],
     "status": [        
 		    { "code": 102, "icon": "active", "caption": "OK" },
