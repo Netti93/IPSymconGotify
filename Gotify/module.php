@@ -24,7 +24,7 @@ declare(strict_types=1);
 			parent::ApplyChanges();
 		}
 
-		private BuildMessageURL() {
+		private function BuildMessageURL() {
 			return rtrim($this->ReadPropertyString('URL'), '/') . '/message?token=' . $this->ReadPropertyString('ApplicationToken');
 		}
 
