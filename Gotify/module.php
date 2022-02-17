@@ -49,10 +49,11 @@ declare(strict_types=1);
             $response = curl_exec($ch);
             curl_close($ch);
 
-            $responseObject = json_decode($response);
-            if ($responseObject == null) {
+            if (!$response) {
                 return false;
-            } else if (property_exists($responseObject, 'appid')) {
+			}
+            $responseObject = json_decode($response);
+			if (property_exists($responseObject, 'appid')) {
                 $this->SetStatus(102);
                 return true;
             } else if (property_exists($responseObject, 'errorCode') && $responseObject->{'errorCode'} == 404) {
