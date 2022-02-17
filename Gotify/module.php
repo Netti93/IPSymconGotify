@@ -46,20 +46,26 @@ declare(strict_types=1);
                 CURLOPT_SAFE_UPLOAD    => true,
                 CURLOPT_RETURNTRANSFER => true,
             ]);
-            $response = curl_exec($ch);
-            curl_close($ch);
-
-            if (!$response) {
+			$response = curl_exec($ch);
+			
+			// Check for errors and display the error message
+			if(!$response) {
+				$err = array("error" => curl_error($ch), "errorCode" => curl_errno($ch), "errorDescription" => curl_strerror($errno));
+				IPS_LogMessage('Gotify', json_encode($err));
+                $this->SetStatus(201);
                 return false;
 			}
+
+            curl_close($ch);
+
             $responseObject = json_decode($response);
 			if (property_exists($responseObject, 'appid')) {
                 $this->SetStatus(102);
                 return true;
             } else if (property_exists($responseObject, 'errorCode') && $responseObject->{'errorCode'} == 404) {
-                $this->SetStatus(201);
-            } else if (property_exists($responseObject, 'errorCode') && $responseObject->{'errorCode'} == 401) {
                 $this->SetStatus(202);
+            } else if (property_exists($responseObject, 'errorCode') && $responseObject->{'errorCode'} == 401) {
+                $this->SetStatus(203);
             }
 
             IPS_LogMessage('Gotify', $response);
