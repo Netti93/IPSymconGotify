@@ -1,67 +1,33 @@
 # Gotify
-Beschreibung des Moduls.
 
-### Inhaltsverzeichnis
+### 1. Konfiguration
 
-1. [Funktionsumfang](#1-funktionsumfang)
-2. [Voraussetzungen](#2-voraussetzungen)
-3. [Software-Installation](#3-software-installation)
-4. [Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
-5. [Statusvariablen und Profile](#5-statusvariablen-und-profile)
-6. [WebFront](#6-webfront)
-7. [PHP-Befehlsreferenz](#7-php-befehlsreferenz)
+| Name                     | Typ       | Beschreibung                         |
+| :----------------------: | :-------: | :----------------------------------: |
+| Server URL               | string    | URL des Gotify-Servers               |
+| Application Token        | string    | App-Token zur Authentifizierung      |
 
-### 1. Funktionsumfang
+### 2. Funktionsreferenz
 
-*
-
-### 2. Vorraussetzungen
-
-- IP-Symcon ab Version 6.0
-
-### 3. Software-Installation
-
-* Über den Module Store das 'Gotify'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
-
-### 4. Einrichten der Instanzen in IP-Symcon
-
- Unter 'Instanz hinzufügen' kann das 'Gotify'-Modul mithilfe des Schnellfilters gefunden werden.  
-	- Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
-
-__Konfigurationsseite__:
-
-Name     | Beschreibung
--------- | ------------------
-         |
-         |
-
-### 5. Statusvariablen und Profile
-
-Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
-
-#### Statusvariablen
-
-Name   | Typ     | Beschreibung
------- | ------- | ------------
-       |         |
-       |         |
-
-#### Profile
-
-Name   | Typ
------- | -------
-       |
-       |
-
-### 6. WebFront
-
-Die Funktionalität, die das Modul im WebFront bietet.
-
-### 7. PHP-Befehlsreferenz
-
-`boolean GOTIFY_BeispielFunktion(integer $InstanzID);`
-Erklärung der Funktion.
+#### Nachricht senden
+`boolean GOTIFY_SendMessage(integer $InstanzID, string $title, string $message, integer $priority);`  
+sendet eine Nachricht bestehend aus einem Titel und dem Nachrichtentext. Der Parameter $priority ist optional. Mehr Infos können in der [API-Dokumentation](https://gotify.net/api-docs#/message/createMessage) gefunden werden.
 
 Beispiel:
-`GOTIFY_BeispielFunktion(12345);`
+```php
+GOTIFY_SendMessage(12345, 'Der Titel', 'Eine Nachricht mit vielen Worten.', 0);
+```
+
+#### Nachricht mit Extras senden
+`boolean GOTIFY_SendMessageWithExtras(integer $InstanzID, string $title, string $message, integer $priority, array $extras);`  
+erweitert die Nachricht die sogenannten Extras. Wie diese anzuwenden sind kann [hier](https://gotify.net/docs/msgextras) nachgelesen werden.
+Das Format des Parameters muss ein string-indiziertes, multidimensionales Array sein.
+
+Beispiel:
+```php
+GOTIFY_SendMessageWithExtras(12345, 'Der Titel', 'Eine Nachricht mit vielen Worten.', 0, array("client::display" => array("contentType" => "text/plain")));
+```
+
+#### Testnachricht senden
+`boolen GOTIFY_SendTestMessage(integer $InstanzID);`  
+sendet eine vordefinierte Testnachricht mit Priorität 0. Diese Funktion wird auf der Konfigurationsseite vom Button "Sende Testnachricht" verwendet.
