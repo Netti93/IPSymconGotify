@@ -24,6 +24,10 @@ declare(strict_types=1);
 			parent::ApplyChanges();
 		}
 
+		private BuildMessageURL() {
+			return rtrim($this->ReadPropertyString('URL'), '/') . '/message?token=' . $this->ReadPropertyString('ApplicationToken');
+		}
+
 		public function SendMessage(string $title, string $message, int $priority = 0)
         {
             return $this->SendMessageWithExtras($title, $message, $priority);
@@ -32,9 +36,8 @@ declare(strict_types=1);
 		public function SendMessageWithExtras(string $title, string $message, int $priority = 0, array $extras = [])
         {
             curl_setopt_array($ch = curl_init(), [
-                CURLOPT_URL        => $this->ReadPropertyString('URL'),
+                CURLOPT_URL        => $this->BuildMessageURL(),
                 CURLOPT_POSTFIELDS => [
-                    'token'     => $this->ReadPropertyString('ApplicationToken'),
                     'title'     => $title,
                     'message'   => $message,
 					'priority'  => $priority,
@@ -47,12 +50,13 @@ declare(strict_types=1);
             curl_close($ch);
 
             $responseObject = json_decode($response);
-            if ($responseObject == null) {				
-                $this->SetStatus(201);
+            if ($responseObject == null) {
                 return false;
             } else if (property_exists($responseObject, 'appid')) {
                 $this->SetStatus(102);
                 return true;
+            } else if (property_exists($responseObject, 'errorCode') && $responseObject->{'errorCode'} == 404) {
+                $this->SetStatus(201);
             } else if (property_exists($responseObject, 'errorCode') && $responseObject->{'errorCode'} == 401) {
                 $this->SetStatus(202);
             }
