@@ -1,0 +1,12 @@
+{
+    "id": "{23DF70BD-570B-4CA9-1B85-4124A62C10DB}",
+    "name": "Gotify",
+    "author": "Dominik Nett",
+    "url": "https://github.com/Netti93/IPSymconGotify",
+    "compatibility": {
+        "version": "6.0"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 0
+}

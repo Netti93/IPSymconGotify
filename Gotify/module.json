@@ -1,0 +1,12 @@
+{
+    "id": "{CB54965F-FAF7-A902-F9CA-606AB0614458}",
+    "name": "Gotify",
+    "type": 3,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "GOTIFY",
+    "url": ""
+}

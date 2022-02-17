@@ -1,0 +1,14 @@
+{
+    "elements": [
+		{ "type": "ValidationTextBox", "name": "URL", "caption": "Server URL (required)" },
+        { "type": "ValidationTextBox", "name": "ApplicationToken", "caption": "Application Token (required)" }
+    ],
+    "actions": [        
+		{ "type": "Button", "label": "Send test message",  "onClick": "if(GOTIFY_SendMessage($id,'Testnachricht','Dies ist eine Testnachricht von Symcon',0)) echo 'OK'; else echo 'Fehler';"  }
+    ],
+    "status": [        
+		{ "code": 102, "icon": "active", "caption": "OK" },
+        { "code": 201, "icon": "error", "caption": "URL invalid" },
+		{ "code": 202, "icon": "error", "caption": "Token invalid" }
+    ]
+}

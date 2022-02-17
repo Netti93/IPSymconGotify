@@ -1,0 +1,11 @@
+{
+    "translations": {
+        "de": {
+            "Server URL (required)": "Server URL (erforderlich)",
+            "Application Token (required)": "App Token (erforderlich)",
+            "Send test message": "Testnachricht senden",
+            "URL invalid": "URL fehlerhaft",
+            "Token invalid": "Token ungültig"
+        }
+    }
+}
