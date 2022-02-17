@@ -27,6 +27,10 @@ declare(strict_types=1);
 		private function BuildMessageURL() {
 			return rtrim($this->ReadPropertyString('URL'), '/') . '/message?token=' . $this->ReadPropertyString('ApplicationToken');
 		}
+		
+		public function SendTestMessage() {
+			return $this->SendMessageWithExtras($this->Translate('Test message'), $this->Translate('This is a test message from your Symcon instance'));
+		}
 
 		public function SendMessage(string $title, string $message, int $priority = 0)
         {
