@@ -59,7 +59,7 @@ declare(strict_types=1);
 					"errorCode" => curl_getinfo($ch, CURLINFO_RESPONSE_CODE),
 					"errorDescription" => curl_error($ch)
 				);
-				IPS_LogMessage('Gotify', json_encode($errorArr));
+				$this->LogMessage(json_encode($errorArr), KL_ERROR);
                 $this->SetStatus(201);
                 return false;
 			}
@@ -76,7 +76,7 @@ declare(strict_types=1);
                 $this->SetStatus(203);
             }
 
-            IPS_LogMessage('Gotify', $response);
+            $this->LogMessage($response, KL_ERROR);
 
             return false;
         }
