@@ -50,8 +50,11 @@ declare(strict_types=1);
 			
 			// Check for errors and display the error message
 			if(!$response) {
-				$errorCode = curl_errno($ch);
-				$errorArr = array("error" => curl_error($ch), "errorCode" => $errorCode, "errorDescription" => curl_strerror($errorCode));
+				$errorArr = array(
+					"error" => curl_error($ch),
+					"errorCode" => curl_getinfo($ch, CURLINFO_RESPONSE_CODE),
+					"errorDescription" => curl_strerror(curl_errno($ch))
+				);
 				IPS_LogMessage('Gotify', json_encode($errorArr));
                 $this->SetStatus(201);
                 return false;
