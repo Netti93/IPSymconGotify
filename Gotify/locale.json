@@ -8,8 +8,7 @@
             "URL invalid": "URL fehlerhaft",
             "Token invalid": "Token ungültig",
             "Test message": "Testnachricht",
-            "This is a test message from your Symcon instance": "Dies ist eine Testnachricht von Symcon",
-            "Error": "Fehler"
+            "This is a test message from your Symcon instance": "Dies ist eine Testnachricht von Symcon"
         }
     }
 }

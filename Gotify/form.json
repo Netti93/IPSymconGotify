@@ -1,15 +1,15 @@
 {
     "elements": [
-		    { "type": "ValidationTextBox", "name": "URL", "caption": "Server URL (required)" },
+		{ "type": "ValidationTextBox", "name": "URL", "caption": "Server URL (required)" },
         { "type": "ValidationTextBox", "name": "ApplicationToken", "caption": "Application Token (required)" }
     ],
     "actions": [        
-		    { "type": "Button", "label": "Send test message",  "onClick": "if (GOTIFY_SendTestMessage($id)) echo 'OK'; else echo 'Error';" }
+		{ "type": "Button", "caption": "Send test message",  "onClick": "if (GOTIFY_SendTestMessage($id)) echo 'OK'; else echo 'Error';" }
     ],
     "status": [        
-		    { "code": 102, "icon": "active", "caption": "OK" },
+		{ "code": 102, "icon": "active", "caption": "OK" },
         { "code": 201, "icon": "error", "caption": "An error occurred - please check the log" },
         { "code": 202, "icon": "error", "caption": "URL invalid" },
-		    { "code": 203, "icon": "error", "caption": "Token invalid" }
+		{ "code": 203, "icon": "error", "caption": "Token invalid" }
     ]
 }

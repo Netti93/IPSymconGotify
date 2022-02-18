@@ -1,19 +1,21 @@
 # Gotify
 
-[![IPS-Version](https://img.shields.io/badge/Symcon_Version-6.0+-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
+[![IPS-Version](https://img.shields.io/badge/Symcon_Version-6.1+-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 ![Code](https://img.shields.io/badge/Code-PHP-blue.svg)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ### Inhaltsverzeichnis
 
-1. [Funktionsumfang](#1-funktionsumfang)
-2. [Vorraussetzungen](#2-vorraussetzungen)
-3. [Software-Installation](#3-software-installation)
-4. [Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
-5. [Konfiguration](#5-konfiguration)
-6. [PHP-Befehlsreferenz](#6-php-befehlsreferenz)
-7. [Anhang](#7-anhang)
-8. [Versionshistorie](#8-versionshistorie)
+- [Gotify](#gotify)
+    - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+    - [1. Funktionsumfang](#1-funktionsumfang)
+    - [2. Vorraussetzungen](#2-vorraussetzungen)
+    - [3. Software-Installation](#3-software-installation)
+    - [4. Einrichten der Instanzen in IP-Symcon](#4-einrichten-der-instanzen-in-ip-symcon)
+    - [5. Konfiguration](#5-konfiguration)
+    - [6. PHP-Befehlsreferenz](#6-php-befehlsreferenz)
+    - [7. Anhang](#7-anhang)
+    - [8. Versionshistorie](#8-versionshistorie)
 
 ### 1. Funktionsumfang
 
@@ -21,11 +23,11 @@
 
 ### 2. Vorraussetzungen
 
-- IP-Symcon ab Version 6.0  
+- IP-Symcon ab Version 6.1  
 (es kann auch mit früheren Versionen funktionieren, wurde aber nicht getestet)
 - Ein von der IP-Symcon Instanz aus erreichbarer Gotify-Server ab Version 2.0.22  
 (es kann auch mit früheren Versionen funktionieren, wurde aber nicht getestet)
-- Ein App-Token von selbigem Gotify-Server
+- Ein gültiger App-Token von selbigem Gotify-Server
 
 ### 3. Software-Installation
 
@@ -58,5 +60,5 @@ Verweise:
 
 ### 8. Versionshistorie
 
-- 1.0 @ 18.02.2022 00:50
+- 1.0 @ 18.02.2022 16:07
   - Initiale Version
