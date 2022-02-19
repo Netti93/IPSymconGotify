@@ -30,7 +30,8 @@
 ### 3. Software-Installation
 
 * Über den Module Store das 'Gotify'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
+* Alternativ über das Module Control folgende URL hinzufügen:  
+https://github.com/Netti93/IPSymconGotify
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
