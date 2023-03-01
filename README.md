@@ -22,9 +22,9 @@
 ### 2. Vorraussetzungen
 
 - IP-Symcon ab Version 5.3  
-(es wurde meinerseits jedoch nur mit Version 6.1 getestet)
+(es wurde meinerseits jedoch nur ab Version 6.1 aufwärts getestet/genutzt)
 - Ein von der IP-Symcon Instanz aus erreichbarer Gotify-Server ab Version 2.0.0  
-(es wurde meinerseits jedoch nur mit Version 2.0.22 getestet)
+(es wurde meinerseits jedoch nur ab Version 2.0.22 aufwärts getestet/genutzt)
 - Ein gültiger App-Token von selbigem Gotify-Server
 
 ### 3. Software-Installation
@@ -61,3 +61,5 @@ Verweise:
 
 - 1.0 @ 18.02.2022 16:07
   - Initiale Version
+- 1.1 @ 01.03.2023 21:43
+  - Fix for messages with extras
