@@ -62,4 +62,4 @@ Verweise:
 - 1.0 @ 18.02.2022 16:07
   - Initiale Version
 - 1.1 @ 01.03.2023 21:43
-  - Fix for messages with extras
+  - Fix SendMessageWithExtras
