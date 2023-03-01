@@ -41,16 +41,22 @@ declare(strict_types=1);
 
         public function SendMessageWithExtras(string $title, string $message, int $priority = 0, array $extras = [])
         {
+            $postfields = [
+                'title'     => $title,
+                'message'   => $message,
+                'priority'  => $priority
+            ];
+
+            if(!empty($extras))
+            {
+                $postfields['extras'] = $extras;
+            }
+
             curl_setopt_array($ch = curl_init(), [
                 CURLOPT_URL        => $this->BuildMessageURL(),
                 CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
                 CURLOPT_POST       => true,
-                CURLOPT_POSTFIELDS => json_encode([
-                    'title'     => $title,
-                    'message'   => $message,
-                    'priority'  => $priority,
-                    'extras'    => $extras,
-                ]),
+                CURLOPT_POSTFIELDS => json_encode($postfields),
                 CURLOPT_SAFE_UPLOAD    => true,
                 CURLOPT_RETURNTRANSFER => true,
             ]);
