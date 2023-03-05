@@ -59,7 +59,7 @@ declare(strict_types=1);
             return $this->SendMessageWithExtras($title, $message, $priority, $extras);
         }
 
-        public function SendImageFromUrl(string $title, string $message, string $url, string $imageDescription, boolean $notificationImage = false, int $priority = 0)
+        public function SendImageFromUrl(string $title, string $message, string $url, string $imageDescription, bool $notificationImage = false, int $priority = 0)
         {
             $message = "![" . $imageDescription . "](" . $url . ")" . $message;
             $extras = $this->AddMarkdownToExtras();
