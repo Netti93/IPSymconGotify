@@ -29,6 +29,11 @@ declare(strict_types=1);
             return rtrim($this->ReadPropertyString('URL'), '/').'/message?token='.$this->ReadPropertyString('ApplicationToken');
         }
 
+        private function AddMarkdownToExtras()
+        {
+            return array("client::display" => array("contentType" => "text/markdown"));
+        }
+
         public function SendTestMessage()
         {
             return $this->SendMessageWithExtras($this->Translate('Test message'), $this->Translate('This is a test message from your Symcon instance'));
@@ -37,6 +42,34 @@ declare(strict_types=1);
         public function SendMessage(string $title, string $message, int $priority = 0)
         {
             return $this->SendMessageWithExtras($title, $message, $priority);
+        }
+
+        public function SendMessageWithNotificationUrl(string $title, string $message, string $notificationUrl, int $priority = 0)
+        {
+            $extras = array("client::notification" => array("click" => array("url" => $notificationUrl)));
+            return $this->SendMessageWithExtras($title, $message, $priority, $extras);
+        }
+
+        public function SendImage(string $title, string $message, int $imageId, string $imageDescription, int $priority = 0)
+        {
+            $image = IPS_GetMediaContent($imageId);
+            $message = "![" . $imageDescription . "](data:image/jpeg;base64," . $image . ")\n\n" . $message;
+            $extras = $this->AddMarkdownToExtras();
+
+            return $this->SendMessageWithExtras($title, $message, $priority, $extras);
+        }
+
+        public function SendImageFromUrl(string $title, string $message, string $url, string $imageDescription, bool $notificationImage = false, int $priority = 0)
+        {
+            $message = "![" . $imageDescription . "](" . $url . ")\n\n" . $message;
+            $extras = $this->AddMarkdownToExtras();
+
+            if($notificationImage)
+            {
+                $extras["client::notification"] = array("bigImageUrl" => $url);
+            }
+
+            return $this->SendMessageWithExtras($title, $message, $priority, $extras);
         }
 
         public function SendMessageWithExtras(string $title, string $message, int $priority = 0, array $extras = [])

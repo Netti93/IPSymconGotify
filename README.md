@@ -59,7 +59,9 @@ Verweise:
 
 ### 8. Versionshistorie
 
-- 1.0 @ 18.02.2022 16:07
+- 1.0 @ 18.02.2022
   - Initiale Version
-- 1.1 @ 01.03.2023 21:43
-  - Fix SendMessageWithExtras
+- 1.1 @ 01.03.2023
+  - Fix für SendMessageWithExtras
+- 1.2 @ 05.03.2023
+  - SendMessageWithNotificationUrl, SendImage und SendImageFromUrl hinzugefügt
