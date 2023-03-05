@@ -29,6 +29,11 @@ declare(strict_types=1);
             return rtrim($this->ReadPropertyString('URL'), '/').'/message?token='.$this->ReadPropertyString('ApplicationToken');
         }
 
+        private function AddMarkdownToExtras()
+        {
+            return array("client::display" => array("contentType" => "text/markdown"));
+        }
+
         public function SendTestMessage()
         {
             return $this->SendMessageWithExtras($this->Translate('Test message'), $this->Translate('This is a test message from your Symcon instance'));
@@ -39,24 +44,31 @@ declare(strict_types=1);
             return $this->SendMessageWithExtras($title, $message, $priority);
         }
 
-        public function SendImage(string $title, int $imageId, int $priority = 0, string $notificationUrl = null)
+        public function SendMessageWithNotificationUrl(string $title, string $message, string $notificationUrl, int $priority = 0)
+        {
+            $extras = array("client::notification" => array("click" => array("url" => $notificationUrl)));
+            return $this->SendMessageWithExtras($title, $message, $priority, $extras);
+        }
+
+        public function SendImage(string $title, string $message, int $imageId, string $imageDescription, int $priority = 0)
         {
             $image = IPS_GetMediaContent($imageId);
-            $message = "![" . $imageId . "](data:image/jpeg;base64," . $image . ")";
-            $extras = array("client::display" => array("contentType" => "text/markdown"));
-
-            if(!empty($notificationUrl))
-            {
-                $extras["client::notification"] = array("click" => array("url" => $notificationUrl));
-            }
+            $message = "![" . $imageDescription . "](data:image/jpeg;base64," . $image . ")" . $message;
+            $extras = this->AddMarkdownToExtras();
 
             return $this->SendMessageWithExtras($title, $message, $priority, $extras);
         }
 
-        public function SendImageFromUrl(string $title, string $url, int $priority = 0, string $notificationUrl = null)
+        public function SendImageFromUrl(string $title, string $message, string $url, string $imageDescription, boolean $notificationImage = false, int $priority = 0)
         {
-            $message = "![Image](" . $url . ")";
-            $extras = array("client::display" => array("contentType" => "text/markdown"));
+            $message = "![" . $imageDescription . "](" . $url . ")" . $message;
+            $extras = this->AddMarkdownToExtras();
+
+            if($notificationImage)
+            {
+                $extras["client::notification"] = array("bigImageUrl" => $url);
+            }
+
             return $this->SendMessageWithExtras($title, $message, $priority, $extras);
         }
 

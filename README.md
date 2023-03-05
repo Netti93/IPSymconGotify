@@ -64,4 +64,4 @@ Verweise:
 - 1.1 @ 01.03.2023
   - Fix für SendMessageWithExtras
 - 1.2 @ 05.03.2023
-  - SendImage und SendImageFromUrl hinzugefügt
+  - SendMessageWithNotificationUrl, SendImage und SendImageFromUrl hinzugefügt
