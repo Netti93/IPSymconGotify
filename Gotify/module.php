@@ -53,7 +53,7 @@ declare(strict_types=1);
         public function SendImage(string $title, string $message, int $imageId, string $imageDescription, int $priority = 0)
         {
             $image = IPS_GetMediaContent($imageId);
-            $message = "![" . $imageDescription . "](data:image/jpeg;base64," . $image . ")" . $message;
+            $message = "![" . $imageDescription . "](data:image/jpeg;base64," . $image . ")\n\n" . $message;
             $extras = $this->AddMarkdownToExtras();
 
             return $this->SendMessageWithExtras($title, $message, $priority, $extras);
@@ -61,7 +61,7 @@ declare(strict_types=1);
 
         public function SendImageFromUrl(string $title, string $message, string $url, string $imageDescription, bool $notificationImage = false, int $priority = 0)
         {
-            $message = "![" . $imageDescription . "](" . $url . ")" . $message;
+            $message = "![" . $imageDescription . "](" . $url . ")\n\n" . $message;
             $extras = $this->AddMarkdownToExtras();
 
             if($notificationImage)
