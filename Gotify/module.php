@@ -39,6 +39,27 @@ declare(strict_types=1);
             return $this->SendMessageWithExtras($title, $message, $priority);
         }
 
+        public function SendImage(string $title, int $imageId, int $priority = 0, string $notificationUrl = null)
+        {
+            $image = IPS_GetMediaContent($imageId);
+            $message = "![" . $imageId . "](data:image/jpeg;base64," . $image . ")"
+            $extras = array("client::display" => array("contentType" => "text/markdown"));
+
+            if(!empty($notificationUrl))
+            {
+                $extras["client::notification"] = array("click" => array("url" => $notificationUrl));
+            }
+
+            return $this->SendMessageWithExtras($title, $message, $priority, $extras);
+        }
+
+        public function SendImageFromUrl(string $title, string $url, int $priority = 0, string $notificationUrl = null)
+        {
+            $message = "![Image](" . $url . ")"
+            $extras = array("client::display" => array("contentType" => "text/markdown"));
+            return $this->SendMessageWithExtras($title, $message, $priority, $extras);
+        }
+
         public function SendMessageWithExtras(string $title, string $message, int $priority = 0, array $extras = [])
         {
             $postfields = [
