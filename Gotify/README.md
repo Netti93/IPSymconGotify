@@ -47,7 +47,7 @@ GOTIFY_SendImageFromUrl(12345, 'Der Titel', 'Zusätzliche Infos zum Bild oder ä
 
 #### Nachricht mit Extras senden
 `boolean GOTIFY_SendMessageWithExtras(integer $InstanzID, string $title, string $message, integer $priority, array $extras);`  
-erweitert die Nachricht die sogenannten Extras. Wie diese anzuwenden sind kann [hier](https://gotify.net/docs/msgextras) nachgelesen werden.
+erweitert die Nachricht um die sogenannten Extras. Wie diese anzuwenden sind kann [hier](https://gotify.net/docs/msgextras) nachgelesen werden.
 Das Format des Parameters muss ein string-indiziertes, multidimensionales Array sein.
 
 Beispiel:
