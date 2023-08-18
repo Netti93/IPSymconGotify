@@ -28,7 +28,7 @@ GOTIFY_SendMessageWithNotificationUrl(12345, 'Der Titel', 'Eine eher unwichtige 
 ```
 
 #### Bild senden
-`boolean GOTIFY_SendMessage(integer $InstanzID, string $title, string $message, int $imageId, string $imageDescription, integer $priority);`  
+`boolean GOTIFY_SendImage(integer $InstanzID, string $title, string $message, int $imageId, string $imageDescription, integer $priority);`  
 sendet eine Nachricht bestehend aus einem Titel, dem Nachrichtentext, dem angegebenen Bild (die ImageID muss auf eine Instanz vom Typ "Medien->Bild" verweisen) und einer Bildbeschreibung. Der Parameter $priority ist optional. Mehr Infos können in der [API-Dokumentation](https://gotify.net/api-docs#/message/createMessage) gefunden werden.
 
 Beispiel:
@@ -37,7 +37,7 @@ GOTIFY_SendImage(12345, 'Der Titel', 'Zusätzliche Infos zum Bild oder ähnliche
 ```
 
 #### Bild via URL senden
-`boolean GOTIFY_SendMessage(integer $InstanzID, string $title, string $message, string $url, string $imageDescription, boolean $notificationImage, integer $priority);`  
+`boolean GOTIFY_SendImageFromUrl(integer $InstanzID, string $title, string $message, string $url, string $imageDescription, boolean $notificationImage, integer $priority);`  
 sendet eine Nachricht bestehend aus einem Titel, dem Nachrichtentext, dem verlinkten Bild und einer Bildbeschreibung. Der Parameter $notificationImage definiert, ob die Bild-URL in der Notification gerendered werden soll. Der Parameter $priority ist optional. Mehr Infos können in der [API-Dokumentation](https://gotify.net/api-docs#/message/createMessage) gefunden werden.
 
 Beispiel:
