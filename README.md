@@ -65,3 +65,5 @@ Verweise:
   - Fix für SendMessageWithExtras
 - 1.2 @ 05.03.2023
   - SendMessageWithNotificationUrl, SendImage und SendImageFromUrl hinzugefügt
+- 1.3 @ 16.04.2026
+  - Fix für CompatibilityDeprecation wegen `curl_close()`

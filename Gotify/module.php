@@ -108,7 +108,11 @@ declare(strict_types=1);
                 return false;
             }
 
-            curl_close($ch);
+            if (PHP_VERSION_ID >= 80000) {
+                unset($ch);
+            } else {
+                curl_close($ch);
+            }
 
             $responseObject = json_decode($response);
             if (property_exists($responseObject, 'appid')) {
